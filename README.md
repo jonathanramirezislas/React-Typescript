@@ -1,6 +1,4 @@
-# React TypeScript Webpack Starter
-
-A very simple starter project for using React, TypeScript and Webpack, along with Jest for writing tests.
+# React TypeScript
 
 ## Getting Started
 
@@ -8,12 +6,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 ### Installing
-
-**Note:** Webpack is installed locally as recommended by the official [Webpack documentation](https://webpack.js.org/guides/installation/). 
-It makes it easy to upgrade projects individually when breaking changes are introduced. 
-
-Once you have forked and cloned off the project.
-Install the project dependencies by running
 
 ```
 yarn
@@ -36,18 +28,6 @@ Or using NPM
 npm run dev
 ```
 
-#### Tests
-You can create tests in the `src/__tests__` folder. Tests are handled by [Jest](https://jestjs.io/)
-
-To run tests:
-
-```
-yarn test
-```
-Or using NPM
-```
-npm run test
-```
 
 #### Production
 You can run `webpack --mode production` or the below using our npm scripts.
@@ -77,7 +57,3 @@ npm run build
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* [Saurabh Pati](https://hackernoon.com/react-with-typescript-and-webpack-654f93f34db6) - for his detailed tutorial on setting up React & TypeScript with Webpack
