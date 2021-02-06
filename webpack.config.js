@@ -1,103 +1,32 @@
-const path=require('path');
-const HtmlWebpackPlugin=require('html-webpack-plugin');
-const MiniCssExtractPlugin=require('mini-css-extract-plugin');
-module.exports={
-    mode:"development",
-    entry: './src/index.tsx',
-    output:{
-        path:path.join(__dirname,'build'),
-        filename:'bundle.js'
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+    entry: {
+        app: ['./src/index.tsx'],
+        vendor: ['react', 'react-dom']
     },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/[name].bundle.js'
+    },
+    devtool: "source-map",
     resolve: {
-      extensions: [".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
     },
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
-                test: /\.tsx$/,
-                exclude: /node_modules/,
-                loader: 'ts-loader'
-            },
-           
-            {
-       
-                test: /\.(sa|sc|c)ss$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader'
-                ]
-            },
-
-            {
-                test:/\.(png|jpg|jpeg|svg|gif)$/i,
-                use:{
-                    loader:'file-loader',
-                    options:{
-                        name:'[name].[ext]',
-                        outputPath:'images/',
-                        useRelativePath:true
-                    }
-                }
-            },
-
-            {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                use: [
-                  'file-loader',
-                  {
-                    loader: 'image-webpack-loader',
-                    options: {
-                      mozjpeg: {
-                        progressive: true,
-                      },
-                      // optipng.enabled: false will disable optipng
-                      optipng: {
-                        enabled: false,
-                      },
-                      pngquant: {
-                        quality: [0.65, 0.90],
-                        speed: 4
-                      },
-                      gifsicle: {
-                        interlaced: false,
-                      },
-                      // the webp option will enable WEBP
-                      webp: {
-                        quality: 75
-                      }
-                    }
-                  },
-                ],
-              }
-
-          
+                test: /\.tsx?$/,
+                loader: "awesome-typescript-loader"
+            }
         ]
     },
-  
-    //devtool:'cheap-module-eval-source-map',
-    devServer:{
-        port: 3000,
-        contentBase:path.join(__dirname, 'build')
-    },
 
-
-    plugins:[
-        new HtmlWebpackPlugin({
-          template:'./src/index.html',
-          minify:{
-                collapseWhitespace: true,
-                removeComments: true,
-                removeRedundantAttributes: true,
-                removeScriptTypeAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                useShortDoctype: true
-          }
-        }),
-        new MiniCssExtractPlugin({
-            filename:'styles.css'
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: "./src/index.html",
+            filename: "./index.html"
         })
-
     ]
-
-}
+};

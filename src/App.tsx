@@ -1,4 +1,5 @@
 import React from 'react';
+import { Counter } from './components/Counter';
 
 function App() {
   return (
@@ -6,6 +7,8 @@ function App() {
       <h1>React + TypeScript</h1>
       <hr/>
       <h2>Hi!!</h2>
+
+      <Counter/>
 
     </>
   );
