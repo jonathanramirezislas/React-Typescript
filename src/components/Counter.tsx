@@ -8,7 +8,6 @@ export const Counter = () => {
     
     const incrementar = ( numero: number = 1 ) :void => {
         setCounter( counter + numero);
-        console.log('222');
     }
     
     
